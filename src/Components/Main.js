@@ -1,4 +1,7 @@
+import Asset from './Asset';
 import './css/Main.css'
+import axios from 'axios'
+import { useEffect, useState } from 'react';
 const Main = () => {
     /* var axios = require("axios").default;
 
@@ -16,6 +19,18 @@ const Main = () => {
     }).catch(function (error) {
         console.error(error);
     }); */
+    const [coins, setCoins] = useState([])
+    useEffect(() => {
+        axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=10&page=1&sparkline=false')
+        .then(res => {
+            console.log(setCoins(res.data));
+            console.log(coins);
+        })
+        .catch(err => console.log(err))
+        
+    }, [coins])
+    // console.log(coins[0].name)
+    
    
     return ( 
         <div className="main">
@@ -28,33 +43,9 @@ const Main = () => {
             <section className="main__welcome">
                 <h1>Hi, <span>Ore</span></h1>
                 <div className="main__welcomeTray">
-                    <div className="card">
-                        <div className="card-header">
-                            <h3>Bitcoin</h3>
-                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-                        </div>
-                        <ion-icon name="logo-bitcoin"></ion-icon>
-                        <p className="asset-value">{`0.233467576532 BTC`}</p>
-                        <p className="usd-equip">{`11,032.24 USD`}</p>
-                    </div>
-                    <div className="card">
-                        <div className="card-header">
-                            <h3>Bitcoin</h3>
-                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-                        </div>
-                        <ion-icon name="logo-bitcoin"></ion-icon>
-                        <p className="asset-value">{`0.233467576532 BTC`}</p>
-                        <p className="usd-equip">{`11,032.24 USD`}</p>
-                    </div>
-                    <div className="card">
-                        <div className="card-header">
-                            <h3>Bitcoin</h3>
-                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-                        </div>
-                        <ion-icon name="logo-bitcoin"></ion-icon>
-                        <p className="asset-value">{`0.233467576532 BTC`}</p>
-                        <p className="usd-equip">{`11,032.24 USD`}</p>
-                    </div>
+                {coins? (coins.map((coin, index) => (
+                    <Asset key={index} name={coin.name} usdValue={`${coin.current_price} USD`} assetValue={coin.last_updated} image={coin.image}/>
+                ))) : "Skelenton"}
                 </div>
             </section>
             {/* Latest */}

@@ -7,7 +7,7 @@ const ActionBar = () => {
                 <ion-icon name="grid-outline" className="actionbar__active"></ion-icon>
                 <ion-icon name="calculator-outline"></ion-icon>
                 <ion-icon name="wallet-outline"></ion-icon>
-                <ion-icon name="card-outline"></ion-icon>
+                <ion-icon name="asset-outline"></ion-icon>
                 <ion-icon name="cash-outline"></ion-icon>
                 <ion-icon name="bag-handle-outline"></ion-icon>
             </div>
@@ -20,7 +20,7 @@ const ActionBar = () => {
             </div>
             <div className="actionbar__cta">
                 <ion-icon name="logo-xing"></ion-icon>
-                <a href="#">Get Pro Now</a>
+                <a href="/">Get Pro Now</a>
             </div>
         </div>
      );

@@ -3,9 +3,9 @@ const Sidebar = () => {
     return ( 
         <aside className="sidebar">
             <div className="sidebar__header">
-                <a href="#">Quit</a>
-                <a href="#">Personal</a>
-                <a href="#">
+                <a href="/">Quit</a>
+                <a href="/">Personal</a>
+                <a href="/">
                     <ion-icon name="person-circle-outline"></ion-icon>
                 </a>
             </div>
